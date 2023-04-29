@@ -28,7 +28,8 @@ namespace WebApiOracleEFCore7.Infrastructure.Persistence
                 //    configuration.GetConnectionString("DefaultConnection"),
                 //    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
-                OracleConfiguration.TnsAdmin = @"C:\apps\devkit\ApiResources\Wallet_OracleEFCore";
+                // Directory where you unzipped your cloud credentials
+                OracleConfiguration.TnsAdmin = configuration.GetConnectionString("TnsAdmin");
                 OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
 
                 services.AddDbContext<ApplicationDbContext>(options =>
