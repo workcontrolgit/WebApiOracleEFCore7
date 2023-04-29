@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Oracle.ManagedDataAccess.Client;
+using System.Data;
+using System;
 using WebApiOracleEFCore7.Application.Interfaces;
 using WebApiOracleEFCore7.Application.Interfaces.Repositories;
 using WebApiOracleEFCore7.Infrastructure.Persistence.Contexts;
@@ -24,12 +27,15 @@ namespace WebApiOracleEFCore7.Infrastructure.Persistence
                 //options.UseSqlServer(
                 //    configuration.GetConnectionString("DefaultConnection"),
                 //    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+                OracleConfiguration.TnsAdmin = @"C:\apps\devkit\ApiResources\Wallet_OracleEFCore";
+                OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
+
                 services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseOracle(
                     configuration.GetConnectionString("OracleConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext)
                     .Assembly.FullName)
-                    //.UseOracleSQLCompatibility("12")
                     ));
             }
 
