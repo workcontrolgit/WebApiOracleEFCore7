@@ -23,18 +23,13 @@ namespace WebApiOracleEFCore7.Infrastructure.Persistence
             }
             else
             {
-                // services.AddDbContext<ApplicationDbContext>(options =>
-                //options.UseSqlServer(
-                //    configuration.GetConnectionString("DefaultConnection"),
-                //    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-
                 // Directory where you unzipped your cloud credentials
                 OracleConfiguration.TnsAdmin = configuration.GetConnectionString("TnsAdmin");
                 OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
 
                 services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseOracle(
-                    configuration.GetConnectionString("OracleConnection"),
+                    configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext)
                     .Assembly.FullName)
                     ));
