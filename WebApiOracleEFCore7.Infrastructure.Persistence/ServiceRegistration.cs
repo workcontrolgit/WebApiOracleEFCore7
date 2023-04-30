@@ -2,8 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Oracle.ManagedDataAccess.Client;
-using System.Data;
-using System;
 using WebApiOracleEFCore7.Application.Interfaces;
 using WebApiOracleEFCore7.Application.Interfaces.Repositories;
 using WebApiOracleEFCore7.Infrastructure.Persistence.Contexts;
@@ -23,18 +21,13 @@ namespace WebApiOracleEFCore7.Infrastructure.Persistence
             }
             else
             {
-                // services.AddDbContext<ApplicationDbContext>(options =>
-                //options.UseSqlServer(
-                //    configuration.GetConnectionString("DefaultConnection"),
-                //    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-
                 // Directory where you unzipped your cloud credentials
                 OracleConfiguration.TnsAdmin = configuration.GetConnectionString("TnsAdmin");
                 OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
 
                 services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseOracle(
-                    configuration.GetConnectionString("OracleConnection"),
+                    configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext)
                     .Assembly.FullName)
                     ));
