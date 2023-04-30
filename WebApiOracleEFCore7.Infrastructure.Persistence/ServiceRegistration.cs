@@ -2,8 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Oracle.ManagedDataAccess.Client;
-using System.Data;
-using System;
 using WebApiOracleEFCore7.Application.Interfaces;
 using WebApiOracleEFCore7.Application.Interfaces.Repositories;
 using WebApiOracleEFCore7.Infrastructure.Persistence.Contexts;
