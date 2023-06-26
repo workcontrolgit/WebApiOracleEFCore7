@@ -45,6 +45,7 @@ namespace WebApiOracleEFCore7.Infrastructure.Persistence.Repositories
             return true;
         }
 
+
         public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedPositionReponseAsync(GetPositionsQuery requestParameter)
         {
             var positionNumber = requestParameter.PositionNumber;

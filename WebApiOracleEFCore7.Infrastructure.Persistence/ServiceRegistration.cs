@@ -22,8 +22,8 @@ namespace WebApiOracleEFCore7.Infrastructure.Persistence
             else
             {
                 // Directory where you unzipped your cloud credentials
-                OracleConfiguration.TnsAdmin = configuration.GetConnectionString("TnsAdmin");
-                OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
+                //OracleConfiguration.TnsAdmin = configuration.GetConnectionString("TnsAdmin");
+                //OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
 
                 services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseOracle(
